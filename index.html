@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WealthWise Advisory | Demat, SIP & LIC Expert in India</title>
+<meta name="description" content="Expert financial consultant helping you open Demat accounts, start SIP investments in mutual funds, and buy LIC insurance. Free consultation available across India.">
+<meta name="keywords" content="demat account, SIP investment, mutual funds India, LIC insurance, financial advisor India, stock market beginner">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo">Wealth<span>Wise</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#tools">Calculators</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact" class="nav-cta">Free Consultation</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#tools" onclick="toggleMenu()">Calculators</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#testimonials" onclick="toggleMenu()">Testimonials</a>
+  <a href="#blog" onclick="toggleMenu()">Blog</a>
+  <a href="#contact" onclick="toggleMenu()">Free Consultation</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="badge">🇮🇳 Trusted Financial Partner Across India</div>
+    <h1>Helping You Build Wealth<br>with <em>Smart Investments</em></h1>
+    <p>Demat accounts, SIP mutual funds, LIC insurance & retirement planning — all in one place, with personalized expert guidance.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Get Free Consultation</a>
+      <a href="#tools" class="btn-outline">Try SIP Calculator</a>
+    </div>
+    <div class="trust-badges">
+      <div class="tb"><span>500+</span><small>Happy Clients</small></div>
+      <div class="tb-div"></div>
+      <div class="tb"><span>₹10Cr+</span><small>Assets Guided</small></div>
+      <div class="tb-div"></div>
+      <div class="tb"><span>8+ Yrs</span><small>Experience</small></div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hc-title">Quick Enquiry</div>
+    <input type="text" id="hqName" placeholder="Your Name">
+    <input type="tel" id="hqPhone" placeholder="Phone Number">
+    <select id="hqInterest">
+      <option value="">I'm interested in...</option>
+      <option>Demat Account</option>
+      <option>SIP / Mutual Funds</option>
+      <option>LIC Insurance</option>
+      <option>Retirement Planning</option>
+      <option>Portfolio Review</option>
+    </select>
+    <button class="btn-gold full" onclick="submitQuickEnquiry()">Request Callback →</button>
+    <p class="hc-note">✓ Free consultation &nbsp; ✓ No spam</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What I Offer</div>
+  <h2>Services Designed for <em>Every Investor</em></h2>
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">📈</div>
+      <h3>Demat & Trading Account</h3>
+      <p>Open a fully digital Demat + trading account in minutes. Start investing in stocks, ETFs, and bonds with expert hand-holding — perfect for beginners.</p>
+      <a href="#contact" class="svc-link">Open Account →</a>
+    </div>
+    <div class="svc-card featured">
+      <div class="svc-badge">Most Popular</div>
+      <div class="svc-icon">💰</div>
+      <h3>SIP & Mutual Funds</h3>
+      <p>Start a Systematic Investment Plan with as little as ₹500/month. I help you choose the right mutual fund based on your goals, risk appetite, and timeline.</p>
+      <a href="#contact" class="svc-link">Start SIP →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🛡️</div>
+      <h3>LIC Insurance Policies</h3>
+      <p>Protect your family's future with the right LIC plan — term insurance, endowment plans, ULIPs, and pension plans explained in simple language.</p>
+      <a href="#contact" class="svc-link">Get Insured →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏖️</div>
+      <h3>Retirement Planning</h3>
+      <p>Build a retirement corpus that sustains your lifestyle. I create personalized plans combining PPF, NPS, mutual funds, and insurance for long-term security.</p>
+      <a href="#contact" class="svc-link">Plan Retirement →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS / CALCULATORS -->
+<section id="tools">
+  <div class="section-label">Investment Tools</div>
+  <h2>Calculate Your <em>Financial Future</em></h2>
+  <div class="calc-tabs">
+    <button class="tab active" onclick="showCalc('sip')">SIP Calculator</button>
+    <button class="tab" onclick="showCalc('compound')">Compound Interest</button>
+    <button class="tab" onclick="showCalc('retire')">Retirement</button>
+    <button class="tab" onclick="showCalc('insurance')">Insurance</button>
+  </div>
+
+  <!-- SIP -->
+  <div class="calc-box" id="calc-sip">
+    <div class="calc-inputs">
+      <label>Monthly SIP Amount (₹)<input type="range" id="sipAmt" min="500" max="100000" step="500" value="5000" oninput="calcSIP()"><span id="sipAmtV">₹5,000</span></label>
+      <label>Expected Annual Return (%)<input type="range" id="sipRate" min="6" max="24" step="0.5" value="12" oninput="calcSIP()"><span id="sipRateV">12%</span></label>
+      <label>Investment Duration (Years)<input type="range" id="sipYrs" min="1" max="40" step="1" value="10" oninput="calcSIP()"><span id="sipYrsV">10 yrs</span></label>
+    </div>
+    <div class="calc-result">
+      <div class="cr-item"><small>Amount Invested</small><strong id="sipInv">₹6,00,000</strong></div>
+      <div class="cr-item gold"><small>Estimated Returns</small><strong id="sipRet">₹5,16,584</strong></div>
+      <div class="cr-item big"><small>Total Corpus</small><strong id="sipTotal">₹11,16,584</strong></div>
+      <canvas id="sipChart" width="220" height="220"></canvas>
+      <a href="#contact" class="btn-gold full mt">Start This SIP Today →</a>
+    </div>
+  </div>
+
+  <!-- Compound -->
+  <div class="calc-box hidden" id="calc-compound">
+    <div class="calc-inputs">
+      <label>Principal Amount (₹)<input type="range" id="ciPrinc" min="10000" max="5000000" step="10000" value="100000" oninput="calcCI()"><span id="ciPrincV">₹1,00,000</span></label>
+      <label>Annual Interest Rate (%)<input type="range" id="ciRate" min="4" max="20" step="0.5" value="12" oninput="calcCI()"><span id="ciRateV">12%</span></label>
+      <label>Duration (Years)<input type="range" id="ciYrs" min="1" max="40" step="1" value="10" oninput="calcCI()"><span id="ciYrsV">10 yrs</span></label>
+    </div>
+    <div class="calc-result">
+      <div class="cr-item"><small>Principal</small><strong id="ciPrincR">₹1,00,000</strong></div>
+      <div class="cr-item gold"><small>Interest Earned</small><strong id="ciInt">₹2,10,585</strong></div>
+      <div class="cr-item big"><small>Maturity Amount</small><strong id="ciTotal">₹3,10,585</strong></div>
+      <canvas id="ciChart" width="220" height="220"></canvas>
+      <a href="#contact" class="btn-gold full mt">Start Investing Today →</a>
+    </div>
+  </div>
+
+  <!-- Retirement -->
+  <div class="calc-box hidden" id="calc-retire">
+    <div class="calc-inputs">
+      <label>Current Age<input type="range" id="rAge" min="20" max="55" step="1" value="30" oninput="calcRetire()"><span id="rAgeV">30 yrs</span></label>
+      <label>Retirement Age<input type="range" id="rRetAge" min="50" max="70" step="1" value="60" oninput="calcRetire()"><span id="rRetAgeV">60 yrs</span></label>
+      <label>Monthly Expenses Today (₹)<input type="range" id="rExp" min="10000" max="200000" step="5000" value="30000" oninput="calcRetire()"><span id="rExpV">₹30,000</span></label>
+      <label>Expected Return (%)<input type="range" id="rRet" min="6" max="18" step="0.5" value="12" oninput="calcRetire()"><span id="rRetV">12%</span></label>
+    </div>
+    <div class="calc-result">
+      <div class="cr-item"><small>Years to Retire</small><strong id="rYrs">30</strong></div>
+      <div class="cr-item gold"><small>Monthly SIP Needed</small><strong id="rSIP">₹8,245</strong></div>
+      <div class="cr-item big"><small>Retirement Corpus</small><strong id="rCorpus">₹2.8 Cr</strong></div>
+      <a href="#contact" class="btn-gold full mt">Plan My Retirement →</a>
+    </div>
+  </div>
+
+  <!-- Insurance -->
+  <div class="calc-box hidden" id="calc-insurance">
+    <div class="calc-inputs">
+      <label>Annual Income (₹)<input type="range" id="insInc" min="200000" max="5000000" step="50000" value="600000" oninput="calcIns()"><span id="insIncV">₹6,00,000</span></label>
+      <label>Number of Dependents<input type="range" id="insDep" min="0" max="6" step="1" value="2" oninput="calcIns()"><span id="insDepV">2</span></label>
+      <label>Current Age<input type="range" id="insAge" min="18" max="55" step="1" value="30" oninput="calcIns()"><span id="insAgeV">30 yrs</span></label>
+    </div>
+    <div class="calc-result">
+      <div class="cr-item big"><small>Recommended Cover</small><strong id="insCover">₹72,00,000</strong></div>
+      <div class="cr-item gold"><small>Approx. Premium/yr</small><strong id="insPrem">₹14,400</strong></div>
+      <div class="cr-item"><small>Cover = Income × </small><strong>12x</strong></div>
+      <a href="#contact" class="btn-gold full mt">Get My Insurance Plan →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img">
+    <div class="about-avatar">
+      <div class="aa-initials">RK</div>
+      <div class="aa-badge">SEBI Registered Partner</div>
+    </div>
+    <div class="about-stats">
+      <div class="as-item"><strong>500+</strong><span>Clients Served</span></div>
+      <div class="as-item"><strong>8+</strong><span>Years Experience</span></div>
+      <div class="as-item"><strong>All India</strong><span>Service</span></div>
+    </div>
+  </div>
+  <div class="about-text">
+    <div class="section-label">About Me</div>
+    <h2>Your Trusted Guide in the World of <em>Finance</em></h2>
+    <p>I'm <strong>Rajesh Kumar</strong>, a SEBI-registered investment distributor and LIC agent with over 8 years of experience helping retail investors across India build wealth through disciplined investing.</p>
+    <p>Whether you're opening your first Demat account, starting a SIP with ₹500/month, or looking for the right LIC plan for your family — I provide honest, jargon-free advice tailored to your specific financial situation.</p>
+    <ul class="about-list">
+      <li>✓ Demat & Trading Account Activation (Zerodha, Groww, Angel One)</li>
+      <li>✓ SIP & Mutual Fund Advisory (Equity, Debt, Hybrid)</li>
+      <li>✓ LIC Agent — Term, Endowment & ULIP Plans</li>
+      <li>✓ Retirement & Tax-Saving (80C, NPS, ELSS) Planning</li>
+      <li>✓ Free Portfolio Review for Existing Investors</li>
+    </ul>
+    <a href="#contact" class="btn-gold">Book a Free Call</a>
+    <a href="beginner-guide.html" class="btn-outline">Download Free Guide</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Client Stories</div>
+  <h2>What My Clients <em>Say</em></h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Rajesh bhai helped me open my first Demat account and start a ₹2,000/month SIP. Two years later, I'm up 28%. He explains everything in simple Hindi — felt like talking to a friend."</p>
+      <div class="testi-author"><div class="ta-avatar">AM</div><div><strong>Amit Mehta</strong><small>Indore, MP</small></div></div>
+    </div>
+    <div class="testi-card featured">
+      <div class="stars">★★★★★</div>
+      <p>"I was confused between FD and mutual funds. Rajesh sir showed me how a ₹5,000 SIP over 15 years can become ₹50 lakhs. Now my whole family invests through him. Highly recommend!"</p>
+      <div class="testi-author"><div class="ta-avatar">PS</div><div><strong>Priya Sharma</strong><small>Bhopal, MP</small></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Got my LIC term plan and Demat account set up in 2 days. Very professional service. Always available on WhatsApp for any doubts. Best financial advisor in Bhopal!"</p>
+      <div class="testi-author"><div class="ta-avatar">RV</div><div><strong>Rohit Verma</strong><small>Bhopal, MP</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-label">Financial Education</div>
+  <h2>Learn to Invest <em>Smarter</em></h2>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-tag">Beginner</div>
+      <h3>How to Open a Demat Account in India (2024 Guide)</h3>
+      <p>Everything you need to know — documents, brokers, charges, and step-by-step process to start investing in stocks.</p>
+      <a href="#contact" class="blog-link">Read Article →</a>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">SIP</div>
+      <h3>SIP vs FD: Which is Better for Long-Term Wealth?</h3>
+      <p>A practical comparison of returns, risks, and liquidity — helping you decide the right investment for your goals.</p>
+      <a href="#contact" class="blog-link">Read Article →</a>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">Mutual Funds</div>
+      <h3>Top 5 ELSS Funds for Tax Saving Under Section 80C</h3>
+      <p>Save up to ₹46,800 in taxes while building wealth. Our curated list of top-performing ELSS mutual funds.</p>
+      <a href="#contact" class="blog-link">Read Article →</a>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">Insurance</div>
+      <h3>Term Insurance vs LIC Endowment: What Should You Buy?</h3>
+      <p>Understand the difference between pure protection plans and savings-linked LIC policies before you decide.</p>
+      <a href="#contact" class="blog-link">Read Article →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FREE GUIDE CTA -->
+<section id="guide-cta">
+  <div class="guide-box">
+    <div class="guide-left">
+      <div class="guide-icon">📘</div>
+      <div>
+        <h3>Free Download: Beginner's Guide to Investing in India</h3>
+        <p>A 20-page PDF covering Demat, SIP, mutual funds, LIC & tax saving — written in simple language for first-time investors.</p>
+      </div>
+    </div>
+    <a href="#contact" class="btn-gold">Download Free →</a>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Request Your <em>Free Consultation</em></h2>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Why Talk to Me?</h3>
+      <ul>
+        <li>🎯 100% Free first consultation</li>
+        <li>📱 Available on WhatsApp 24/7</li>
+        <li>🇮🇳 Serving clients Pan-India</li>
+        <li>📊 Free portfolio review for existing investors</li>
+        <li>🔒 Your data is completely private</li>
+      </ul>
+      <a href="https://wa.me/919876543210?text=Hi!%20I%20want%20a%20free%20financial%20consultation." class="whatsapp-btn" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+    <form class="contact-form" onsubmit="submitForm(event)">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your Full Name *" required>
+        <input type="tel" name="phone" placeholder="Phone Number *" required>
+      </div>
+      <input type="email" name="email" placeholder="Email Address">
+      <select name="interest" required>
+        <option value="">Investment Interest *</option>
+        <option>Open Demat Account</option>
+        <option>Start SIP / Mutual Fund</option>
+        <option>Buy LIC Insurance</option>
+        <option>Retirement Planning</option>
+        <option>Free Portfolio Review</option>
+        <option>Download Free Guide</option>
+        <option>General Query</option>
+      </select>
+      <textarea name="message" placeholder="Tell me about your financial goals (optional)" rows="3"></textarea>
+      <button type="submit" class="btn-gold full">Submit & Get Free Consultation →</button>
+      <p class="form-note">By submitting, you agree to be contacted. No spam, ever.</p>
+      <div id="formMsg" class="form-success hidden">✅ Thank you! I'll call you within 24 hours.</div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">Wealth<span>Wise</span></div>
+      <p>Your trusted partner for Demat accounts, SIP investments, mutual funds & LIC insurance across India.</p>
+    </div>
+    <div class="footer-links">
+      <strong>Quick Links</strong>
+      <a href="#services">Services</a>
+      <a href="#tools">Calculators</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="admin.html">Admin</a>
+    </div>
+    <div class="footer-links">
+      <strong>Services</strong>
+      <a href="#services">Demat Account</a>
+      <a href="#services">SIP Investments</a>
+      <a href="#services">LIC Insurance</a>
+      <a href="#services">Retirement Planning</a>
+    </div>
+    <div class="footer-contact">
+      <strong>Contact</strong>
+      <a href="tel:+919876543210">📞 +91 98765 43210</a>
+      <a href="mailto:rajesh@wealthwise.in">✉️ rajesh@wealthwise.in</a>
+      <a href="https://wa.me/919876543210" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    <p><strong>Disclaimer:</strong> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future returns. Rajesh Kumar acts as a registered distributor/partner with SEBI-registered brokers and as an authorised LIC agent. This website is for informational purposes only and does not constitute financial advice. AMFI Registration No: [ARN-XXXXX]. LIC Agent Code: [XXXXXX].</p>
+    <p>© 2024 WealthWise Advisory. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+  </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919876543210?text=Hi!%20I%20want%20a%20free%20financial%20consultation." class="wa-float" target="_blank" title="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="app.js"></script>
+</body>
+</html>
